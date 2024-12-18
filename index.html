@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EaglerForge Injector</title>
+    <title>EaglercraftX 1.8 Optimizer</title>
     <link
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
@@ -63,7 +63,7 @@
   </head>
   <body>
     <div class="container">
-      <h1>EaglerForge Injector</h1>
+      <h1>Eaglercraft Optimizer</h1>
       <div class="github-button-container">
         <a
           href="https://github.com/eaglerforge/EaglerForgeInjector"
@@ -74,9 +74,9 @@
         </a>
       </div>
       <h6>
-        Adds ModAPI with more functionality (adds hooking into functions,
-        exposes all classes, etc) to unminified unobfuscated EaglercraftX
-        offline downloads (web support coming soon).
+        Optimizes many math functions to make the game run faster, slightly.
+        Please use unsigned, minified offline clients. This will cause bed's top texture to render incorrectly at east and south directions, please do not report!
+		These optimizations were found by me messing around with Notepad++, and may not increase performance by much, but Free FPS is Free FPS! 
       </h6>
       <br />
       <div class="custom-file mb-3">
@@ -87,58 +87,18 @@
           accept=".html,.js"
         />
         <label class="custom-file-label" for="htmlFile"
-          >Choose .html file...</label
+          >Choose an UNSIGNED EaglercraftX_1.8_Offline file...</label
         >
         <br />
-        <span><label>Minify:&nbsp;</label><input type="checkbox" oninput="globalThis.doShronk = this.checked">&nbsp;&nbsp;&nbsp;
-          <label>EaglerForge:&nbsp;</label><input checked type="checkbox" oninput="globalThis.doEaglerforge = this.checked">&nbsp;&nbsp;&nbsp;
-          <label>Optimize π:&nbsp;</label><input checked type="checkbox" oninput="globalThis.optimizePi= this.checked">
+        <span>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code id="status">Awaiting input...</code></span>
         <br /><br />
-        <button class="btn btn-primary" id="giveme">Make modded client</button>
-        <button class="btn btn-primary" id="givemeserver" disabled>
-          Make modded server (coming soonish maybe)
-        </button>
+        <button class="btn btn-primary" id="giveme">Optimize Now!</button>
       </div>
 
       <br /><br /><br />
-      <span>Info:</span>
-      <div id="#info">
-        <details>
-          <summary>
-            Where can I download an unobfuscated unsigned Eaglercraft build?
-          </summary>
-          <a
-            href="https://github.com/Eaglercraft-Archive/unminified-eaglercraft-builds/releases/latest"
-            >https://github.com/Eaglercraft-Archive/unminified-eaglercraft-builds/releases/latest</a
-          >
-        </details>
-        <details>
-          <summary>
-            How do I compile my own unobfuscated unsigned Eaglercraft build?
-          </summary>
-          <a href="docs/compiling_client">tutorial here</a>
-        </details>
-        <details>
-          <summary>How does this tool work?</summary>
-          The injector works by analysing your uploaded file for patterns that
-          appear in TeaVM's compiled JavaScript code. Then, it will replace all
-          functions with proxies to the original code, which it moves into
-          <code>ModAPI.hooks.methods</code>. It does similar things with static
-          properties and constructors, and then hooks into
-          <code>$rt_metadata</code> to access auxilary information.
-        </details>
-        <details>
-          <summary>Where documentation???</summary>
-          <a href="https://eaglerforge.github.io/EaglerForgeInjector/docs"
-            >https://eaglerforge.github.io/EaglerForgeInjector/docs</a
-          >
-        </details>
-      </div>
-    </div>
 
     <!-- Libraries -->
-    <script src="libs/babel.min.js"></script>
     <script src="libs/filesaver.min.js"></script>
 
     <script>
@@ -148,29 +108,8 @@
             e.target.files[0].name;
         }
       });
-      var modapi_preinit = `globalThis.ModAPI ||= {};
-          ModAPI.hooks ||= {};
-          ModAPI.hooks.freezeCallstack = false;
-          ModAPI.hooks._rippedData ||= [];
-          ModAPI.hooks._teavm ||= {};
-          ModAPI.hooks._rippedConstructors ||= {};
-          ModAPI.hooks._rippedInternalConstructors ||= {};
-          ModAPI.hooks.methods ||= {};
-          ModAPI.hooks._rippedMethodTypeMap ||= {};
-          ModAPI.hooks._postInit ||= ()=>{};
-          ModAPI.hooks._rippedStaticProperties ||= {};
-          ModAPI.hooks._rippedStaticIndexer ||= {};
-      `;
-      var freezeCallstack = `if(ModAPI.hooks.freezeCallstack){return false};`;
     </script>
     <script src="patches.js"></script>
-    <script src="injector.minify.js"></script>
     <script src="injector.js"></script>
-
-    <!-- Code assets -->
-    <script src="postinit.js"></script>
-    <script src="modloader.js"></script>
-    <script src="modgui.js"></script>
-    <script src="efserver.js"></script>
   </body>
 </html>
