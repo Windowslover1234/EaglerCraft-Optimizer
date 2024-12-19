@@ -1,4 +1,5 @@
 globalThis.optimizePi = true;
+globalThis.noCountdown = true;
 function wait(ms) {
     return new Promise((resolve, reject) => {
         setTimeout(() => { resolve(); }, ms);
@@ -160,6 +161,11 @@ document.querySelector("#giveme").addEventListener("click", () => {
         );
 		
 		patchedFile = patchedFile.replaceAll(
+            "/2)",
+            "*0.5)"
+        );
+
+		patchedFile = patchedFile.replaceAll(
             "/2|",
             "*0.5|"
         );
@@ -171,6 +177,21 @@ document.querySelector("#giveme").addEventListener("click", () => {
 		patchedFile = patchedFile.replaceAll(
             "/3.0",
             "*0.333333"
+        );
+		
+		patchedFile = patchedFile.replaceAll(
+            "/32.0",
+            "*0.03125"
+        );
+		
+		patchedFile = patchedFile.replaceAll(
+            "/32|",
+            "*0.03125|"
+        );
+		
+		patchedFile = patchedFile.replaceAll(
+            "4/360.0",
+            "0.01111111111"
         );
 		
 		patchedFile = patchedFile.replaceAll(
@@ -209,7 +230,6 @@ document.querySelector("#giveme").addEventListener("click", () => {
         );
 		
     }
-
         _status("Done!");
         patchedFile.replace(`{"._|_libserverside_|_."}`, "");
         var blob = new Blob([patchedFile], { type: file.type });

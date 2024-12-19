@@ -4,7 +4,7 @@ Current features:
 - Optimized Pi (More)
 - Convert A LOT of Division to Multiplication
 - Precompute A LOT of math operations like (3.14 * 180)
-# WARNING! Causes Beds to render incorrectly!
+# Please report rendering bugs in the Issues tab!
 
 ### How to use:
 #### Online
