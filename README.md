@@ -3,7 +3,7 @@ An all in one (Hopefully) Eaglercraft X Math Optimizer to make the game run bett
 Current features:
 - Optimized Pi (More)
 - Convert A LOT of Division to Multiplication
-- Precompute A LOT of math operations like (3.14 * 180)
+- Precompute A LOT of math operations like (3.14 * 180), Not this one Specifically though, as it causes Issues #2 And #3.
 # Please report rendering bugs in the Issues tab!
 
 ### How to use:

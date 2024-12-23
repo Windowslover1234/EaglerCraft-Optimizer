@@ -109,12 +109,12 @@ document.querySelector("#giveme").addEventListener("click", () => {
             "180.0*3.1415927410125732*10430.3779296875",
             "5898239.92619"
         );
-		
+		/* Causes #2 and #3
 		patchedFile = patchedFile.replaceAll(
             "180.0*3.1415927410125732",
             "565.486693382"
         );
-		
+		*/
 
      	   	patchedFile = patchedFile.replaceAll(
             "3.1415927410125732",
